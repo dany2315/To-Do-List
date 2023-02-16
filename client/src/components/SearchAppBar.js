@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { useState} from 'react';
+import { useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
-import { Affiche } from '../logique.js';
+import Menu from '@mui/material/Menu';
+//import MenuItem from '@mui/material/MenuItem';
+import Fade from '@mui/material/Fade';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -48,16 +50,14 @@ const Search = styled('div')(({ theme }) => ({
   }));
 
 
-  function SearchAppBar() {
-    const [text,setText] = useState("");
-
-    handleChange()={
-      Affiche()
-    }
-
+  function SearchAppBar(props) {
+    
+    const [anchorEl] = useState(null)
+    const open = Boolean(anchorEl)
+   
 
     return(
-
+<>
         <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -65,9 +65,24 @@ const Search = styled('div')(({ theme }) => ({
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
-              onChange={this.handleChange()}
+              onChange={props.affiche}
             />
         </Search>
+
+         <Menu
+        id="fade-menu"
+        MenuListProps={{
+          'aria-labelledby': 'fade-button',
+        }}
+        anchorEl={anchorEl}
+        open={open}
+        //onClose={handleClose}
+        TransitionComponent={Fade}
+
+      >
+        
+      </Menu>
+</>
     )
 }
 

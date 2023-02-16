@@ -1,21 +1,30 @@
 import { useState } from 'react';
 import './App.css';
 
-import SearchAppBar from './components/SearchAppBar';
+import SearchAppBar from './components/SearchAppBar.js';
+
 
 
 function App() {
-    const [text,setText]= useState("")
+  const [valuePre,setValuePre]=useState("")
+  
+  const handleChange = () => {
+  setValuePre(`${value}`)
+  console.log(value);
+    
+  }
 
-  return (
+return (
+   
     <div className="App">
       <header className="App-header">
         To Do List
 
-      <SearchAppBar/>
+      <SearchAppBar affiche={handleChange} />
       </header>
     </div>
-  );
+);
 }
+
 
 export default App;
