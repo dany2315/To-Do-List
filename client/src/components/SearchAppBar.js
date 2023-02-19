@@ -54,7 +54,7 @@ const Search = styled('div')(({ theme }) => ({
     
     const [anchorEl] = useState(null)
     const open = Boolean(anchorEl)
-   
+   // const rendu = props.rendu
 
     return(
 <>
@@ -65,7 +65,7 @@ const Search = styled('div')(({ theme }) => ({
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
-              onChange={props.affiche}
+              onChange={(event)=>{props.proposition(event.target.value) ;console.log(props.rendu);}}
             />
         </Search>
 
