@@ -1,6 +1,6 @@
-export const verifVoiture = (v) =>{
+export const verifVoiture = (value) =>{
 
 
-return v
+return value
 }
 

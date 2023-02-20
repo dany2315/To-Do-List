@@ -54,7 +54,7 @@ const Search = styled('div')(({ theme }) => ({
     
     const [anchorEl] = useState(null)
     const open = Boolean(anchorEl)
-   // const rendu = props.rendu
+    const copy = props.copy
 
     return(
 <>
@@ -62,10 +62,16 @@ const Search = styled('div')(({ theme }) => ({
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
+
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
-              onChange={(event)=>{props.proposition(event.target.value) ;console.log(props.rendu);}}
+              onChange={(event)=>{
+                if(event.target.value){
+                props.proposition(event.target.value)
+              console.log(copy);
+            }
+              }}
             />
         </Search>
 
