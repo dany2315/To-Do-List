@@ -6,21 +6,22 @@ import {verifVoiture} from './logique.js'
 
 
 function App() {
-  //const [valuePre,setValuePre]=useState("")
-  
-  const proposition = (value) => {
-   verifVoiture(value) 
-   
-  return value
-  }
 
-return (
    
+
+  function proposition  (value) {
+    const resultats = verifVoiture(value)
+    
+    return resultats
+  }
+  
+  
+  return (
     <div className="App">
       <header className="App-header">
         To Do List
 
-      <SearchAppBar proposition={proposition}  copy={proposition}/>
+      <SearchAppBar proposition={proposition}  />
       </header>
     </div>
 );

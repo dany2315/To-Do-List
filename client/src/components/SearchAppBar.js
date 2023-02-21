@@ -4,8 +4,8 @@ import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import Menu from '@mui/material/Menu';
-//import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
+import { MenuItem } from '@mui/material';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -54,7 +54,9 @@ const Search = styled('div')(({ theme }) => ({
     
     const [anchorEl] = useState(null)
     const open = Boolean(anchorEl)
-    const copy = props.copy
+    
+    
+   
 
     return(
 <>
@@ -66,12 +68,8 @@ const Search = styled('div')(({ theme }) => ({
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
-              onChange={(event)=>{
-                if(event.target.value){
-                props.proposition(event.target.value)
-              console.log(copy);
-            }
-              }}
+              onChange={(event)=>props.propositions.bind(event.target.value)
+               }
             />
         </Search>
 
@@ -86,7 +84,10 @@ const Search = styled('div')(({ theme }) => ({
         TransitionComponent={Fade}
 
       >
+        { .map((resultat,index)=>
         
+        <MenuItem key={index}>{resultat.a}</MenuItem>
+        )}
       </Menu>
 </>
     )
