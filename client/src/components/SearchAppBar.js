@@ -5,7 +5,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import Menu from '@mui/material/Menu';
 import Fade from '@mui/material/Fade';
-import { MenuItem } from '@mui/material';
+//import { MenuItem } from '@mui/material';
+//import {verifVoiture} from '../logique.js';
+//import { MenuItem } from '@mui/material';
+
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -50,15 +53,21 @@ const Search = styled('div')(({ theme }) => ({
   }));
 
 
-  function SearchAppBar(props) {
+//le composant searchAppBar propose des mot cle en pleine recherche ux mui
+function SearchAppBar() {
     
     const [anchorEl] = useState(null)
     const open = Boolean(anchorEl)
-    
-    
-   
+    const [change,setChange] = useState()
 
-    return(
+   const handleChange = (event) =>{
+    var value = event.currentTarget.value
+    setChange(value)
+    console.log(change);
+   }
+  
+
+return(
 <>
         <Search>
             <SearchIconWrapper>
@@ -68,8 +77,7 @@ const Search = styled('div')(({ theme }) => ({
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
-              onChange={(event)=>props.propositions.bind(event.target.value)
-               }
+              onChange={handleChange}
             />
         </Search>
 
@@ -84,10 +92,7 @@ const Search = styled('div')(({ theme }) => ({
         TransitionComponent={Fade}
 
       >
-        { .map((resultat,index)=>
-        
-        <MenuItem key={index}>{resultat.a}</MenuItem>
-        )}
+
       </Menu>
 </>
     )
