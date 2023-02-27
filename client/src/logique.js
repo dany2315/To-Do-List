@@ -1,10 +1,12 @@
-export const verifVoiture = (value) =>{
+export function verifVoiture (value)  {
 const resultats =[
-    "e",
-    "b",
-    "c"
+    {name:value,id:23},
+    {name:value,id:231},
+    {name:value,id:3}
+    
 ]
 
 return resultats
 }
+
 

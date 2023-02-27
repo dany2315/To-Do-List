@@ -3,11 +3,8 @@ import { useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
-import Menu from '@mui/material/Menu';
-import Fade from '@mui/material/Fade';
-//import { MenuItem } from '@mui/material';
-//import {verifVoiture} from '../logique.js';
-//import { MenuItem } from '@mui/material';
+import {verifVoiture} from '../logique.js';
+import './SearchAppBar.css'
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -52,20 +49,20 @@ const Search = styled('div')(({ theme }) => ({
     },
   }));
 
+  
 
 //le composant searchAppBar propose des mot cle en pleine recherche ux mui
 function SearchAppBar() {
     
-    const [anchorEl] = useState(null)
-    const open = Boolean(anchorEl)
-    const [change,setChange] = useState()
-
-   const handleChange = (event) =>{
-    var value = event.currentTarget.value
-    setChange(value)
-    console.log(change);
-   }
   
+    const [resultats,setResultats] = useState([]);
+
+    const handleChange = (event) =>{
+      const prevResultats = verifVoiture(event.target.value);
+      setResultats(prevResultats);
+    }
+  
+ 
 
 return(
 <>
@@ -73,7 +70,6 @@ return(
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
-
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
@@ -81,19 +77,18 @@ return(
             />
         </Search>
 
-         <Menu
-        id="fade-menu"
-        MenuListProps={{
-          'aria-labelledby': 'fade-button',
-        }}
-        anchorEl={anchorEl}
-        open={open}
-        //onClose={handleClose}
-        TransitionComponent={Fade}
-
-      >
-
-      </Menu>
+        <div className='container'>
+              {resultats?.map((resultat)=>
+              <div className='item-suggestion'  key={resultat.id}>
+                {resultat.name}
+              </div>
+            )}
+        </div>
+        
+        
+        
+        
+     
 </>
     )
 }
