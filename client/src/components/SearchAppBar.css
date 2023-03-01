@@ -6,5 +6,10 @@
     
 }
 .item-suggestion{
-    border: solid 2 px;
+    width: 12ch;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 3px 8px 5px 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

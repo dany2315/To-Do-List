@@ -59,7 +59,8 @@ function SearchAppBar() {
 
     const handleChange = (event) =>{
       const prevResultats = verifVoiture(event.target.value);
-      setResultats(prevResultats);
+      prevResultats.length===0?setResultats([]):setResultats(prevResultats);
+      
     }
   
  
@@ -76,14 +77,16 @@ return(
               onChange={handleChange}
             />
         </Search>
+        
 
-        <div className='container'>
-              {resultats?.map((resultat)=>
-              <div className='item-suggestion'  key={resultat.id}>
-                {resultat.name}
-              </div>
-            )}
-        </div>
+          <div className='container'>
+                  {resultats.map((resultat)=>
+                <div className='item-suggestion'  key={resultat.id}>
+                  {resultat.name}
+                </div>
+              )}
+          </div>
+        
         
         
         
