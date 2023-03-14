@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
-import {verifVoiture} from '../logique.js';
+
 import './SearchAppBar.css'
 
 
@@ -55,13 +55,7 @@ const Search = styled('div')(({ theme }) => ({
 function SearchAppBar() {
     
   
-    const [resultats,setResultats] = useState([]);
-
-    const handleChange = (event) =>{
-      const prevResultats = verifVoiture(event.target.value);
-      prevResultats.length===0?setResultats([]):setResultats(prevResultats);
-      
-    }
+   
   
  
 
@@ -74,18 +68,12 @@ return(
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
-              onChange={handleChange}
+              
             />
         </Search>
         
 
-          <div className='container'>
-                  {resultats.map((resultat)=>
-                <div className='item-suggestion'  key={resultat.id}>
-                  {resultat.name}
-                </div>
-              )}
-          </div>
+          
         
         
         
